@@ -1,9 +1,9 @@
 import Snap from "snapsvg";
 
-class animatedSVG {
+class AnimatedSVG {
   constructor({
     el,
-    steps = [0],
+    steps = [],
     attrs,
     initialPath,
     viewBox = "0 0 0 0",
@@ -13,12 +13,12 @@ class animatedSVG {
   } = {}) {
     if (!el) {
       console.error("You need to specify a DOM element as entry.");
-      return false;
+      return;
     }
 
     this.el = el;
     this.options = {
-      initialPath: initialPath || steps[0].animation.d,
+      initialPath: initialPath || (steps[0] && steps[0].animation.d),
       viewBox,
       steps,
       attrs,
@@ -44,8 +44,8 @@ class animatedSVG {
 
   animation(el, steps, easing, frame, callback) {
     if (frame >= steps.length) {
-      callback && callback();
-      return false;
+      if (callback) callback();
+      return;
     }
 
     el.animate(steps[frame].animation, steps[frame].dur, easing, () => {
@@ -59,10 +59,10 @@ class animatedSVG {
       this.path,
       this.options.steps,
       this.options.easing,
-      1,
+      0,
       this.options.onAnimationEnd
     );
   }
 }
 
-export default animatedSVG;
+export default AnimatedSVG;
