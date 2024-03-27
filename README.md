@@ -21,7 +21,7 @@ To use this wrapper, follow the steps below:
 
 ## Usage Example
 
-Check out this [Demo sandbox](https://codesandbox.io/s/utility-animated-svg-morphing-demo-v334dy).
+Check out this [Demo sandbox](https://codesandbox.io/p/sandbox/rough-cookies-v334dy).
 
 Here's a simple example:
 
@@ -40,7 +40,7 @@ const animatedPanel = document.querySelector('.js-animated-panel')
 Now, initialize the class that generates the SVG taking the first path inside the steps property:
 
 ```js
-new animatedSVG({
+new AnimatedSVG({
     el: animatedPanel,
     attrs: {
         viewBox: '0 0 1920 382',
